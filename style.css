@@ -91,6 +91,22 @@ body {
   border: none;
 }
 
+.blue-buttons {
+  background-color: #065471;
+}
+
+#equalsButton {
+  background-color: #4e9f3d;
+}
+
+#clearButton {
+  background-color: #950101;
+}
+
+#deleteButton {
+  background-color: #f05941;
+}
+
 footer {
   color: grey;
   word-spacing: 10px;

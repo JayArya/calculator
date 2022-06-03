@@ -32,8 +32,11 @@
             9
           </button>
 
-          <button class="calculator-button" onclick="operatorClicked('+')">
-            +
+          <button
+            class="calculator-button blue-buttons"
+            onclick="operatorClicked('+')"
+          >
+            &#43;
           </button>
           <button class="calculator-button" onclick="numberClicked(4)">
             4
@@ -44,8 +47,11 @@
           <button class="calculator-button" onclick="numberClicked(6)">
             6
           </button>
-          <button class="calculator-button" onclick="operatorClicked('-')">
-            -
+          <button
+            class="calculator-button blue-buttons"
+            onclick="operatorClicked('-')"
+          >
+            &#8722;
           </button>
 
           <button class="calculator-button" onclick="numberClicked(1)">
@@ -57,26 +63,47 @@
           <button class="calculator-button" onclick="numberClicked(3)">
             3
           </button>
-          <button class="calculator-button" onclick="operatorClicked('*')">
-            *
-          </button>
-          <button class="calculator-button" onclick="decimalClicked()">
-            .
+          <button
+            class="calculator-button blue-buttons"
+            onclick="operatorClicked('*')"
+          >
+            &#215;
           </button>
           <button class="calculator-button" onclick="numberClicked(0)">
             0
           </button>
-          <button class="calculator-button" onclick="deleteClicked()">
+          <button
+            class="calculator-button"
+            id="deleteButton"
+            onclick="deleteClicked()"
+          >
             DEL
           </button>
-          <button class="calculator-button" onclick="operatorClicked('/')">
-            /
+          <button
+            class="calculator-button blue-buttons"
+            onclick="decimalClicked()"
+          >
+            &#8729;
           </button>
-          <button class="calculator-button span-two" onclick="clearClicked()">
+          <button
+            class="calculator-button blue-buttons"
+            onclick="operatorClicked('/')"
+          >
+            &#247;
+          </button>
+          <button
+            class="calculator-button span-two"
+            id="clearButton"
+            onclick="clearClicked()"
+          >
             AC
           </button>
-          <button class="span-two calculator-button" onclick="equalsClicked()">
-            =
+          <button
+            class="span-two calculator-button"
+            id="equalsButton"
+            onclick="equalsClicked()"
+          >
+            &#61;
           </button>
         </div>
       </div>
