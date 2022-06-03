@@ -63,6 +63,26 @@ const clearClicked = () => {
   updateDisplay();
 };
 
+const deleteClicked = () => {
+  if (stage === "secondNumber") {
+    if (num2 < 10) {
+      num2 = null;
+    } else {
+      let num2String = "" + num2;
+      num2 = +num2String.substring(0, num2String.length - 1);
+    }
+    num2Display.textContent = num2;
+  } else if (stage === "firstNumber") {
+    if (num1 < 10) {
+      num1 = null;
+    } else {
+      let num1String = "" + num1;
+      num1 = +num1String.substring(0, num1String.length - 1);
+    }
+    num1Display.textContent = num1;
+  }
+};
+
 const equalsClicked = () => {
   if (operation !== null && num1 !== null && num2 !== null) {
     result = operate(operation, num1, num2);
@@ -70,3 +90,23 @@ const equalsClicked = () => {
     resultDisplay.textContent = result;
   }
 };
+
+document.addEventListener("keydown", (e) => {
+  if (e.key == "0") numberClicked(0);
+  if (e.key == "1") numberClicked(1);
+  if (e.key == "2") numberClicked(2);
+  if (e.key == "3") numberClicked(3);
+  if (e.key == "4") numberClicked(4);
+  if (e.key == "5") numberClicked(5);
+  if (e.key == "6") numberClicked(6);
+  if (e.key == "7") numberClicked(7);
+  if (e.key == "8") numberClicked(8);
+  if (e.key == "9") numberClicked(9);
+  if (e.key == "+") operatorClicked("+");
+  if (e.key == "-") operatorClicked("-");
+  if (e.key == "*") operatorClicked("*");
+  if (e.key == "/") operatorClicked("/");
+  if (e.key == "Backspace") deleteClicked();
+  if (e.key == "Escape") clearClicked();
+  if (e.key == "=") equalsClicked();
+});

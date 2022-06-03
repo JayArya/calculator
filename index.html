@@ -9,39 +9,86 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="calculator-container">
-      <div class="calculator-display">
-        <span id="num1"></span>
-        <span id="operator"></span>
-        <span id="num2"></span>
-        <span id="result"></span>
-      </div>
-      <div class="calculator-keypad">
-        <button class="calculator-button" onclick="numberClicked(1)">1</button>
-        <button class="calculator-button" onclick="numberClicked(2)">2</button>
-        <button class="calculator-button" onclick="numberClicked(3)">3</button>
-        <button class="calculator-button" onclick="operatorClicked('+')">
-          +
-        </button>
-        <button class="calculator-button" onclick="numberClicked(4)">4</button>
-        <button class="calculator-button" onclick="numberClicked(5)">5</button>
-        <button class="calculator-button" onclick="numberClicked(6)">6</button>
-        <button class="calculator-button" onclick="operatorClicked('-')">
-          -
-        </button>
-        <button class="calculator-button" onclick="numberClicked(7)">7</button>
-        <button class="calculator-button" onclick="numberClicked(8)">8</button>
-        <button class="calculator-button" onclick="numberClicked(9)">9</button>
-        <button class="calculator-button" onclick="clearClicked()">C</button>
-        <button class="calculator-button" onclick="numberClicked(0)">0</button>
-        <button class="calculator-button" onclick="operatorClicked('*')">
-          *
-        </button>
-        <button class="calculator-button" onclick="operatorClicked('/')">
-          /
-        </button>
-        <button class="calculator-button" onclick="equalsClicked()">=</button>
+    <div class="calculator">
+      <div class="calculator-container">
+        <div class="calculator-display">
+          <div class="upper-display">
+            <span id="num1"></span>
+            <span id="operator"></span>
+            <span id="num2"></span>
+          </div>
+          <div class="lower-display">
+            <span id="result"></span>
+          </div>
+        </div>
+        <div class="calculator-keypad">
+          <button class="calculator-button" onclick="numberClicked(7)">
+            7
+          </button>
+          <button class="calculator-button" onclick="numberClicked(8)">
+            8
+          </button>
+          <button class="calculator-button" onclick="numberClicked(9)">
+            9
+          </button>
+
+          <button class="calculator-button" onclick="operatorClicked('+')">
+            +
+          </button>
+          <button class="calculator-button" onclick="numberClicked(4)">
+            4
+          </button>
+          <button class="calculator-button" onclick="numberClicked(5)">
+            5
+          </button>
+          <button class="calculator-button" onclick="numberClicked(6)">
+            6
+          </button>
+          <button class="calculator-button" onclick="operatorClicked('-')">
+            -
+          </button>
+
+          <button class="calculator-button" onclick="numberClicked(1)">
+            1
+          </button>
+          <button class="calculator-button" onclick="numberClicked(2)">
+            2
+          </button>
+          <button class="calculator-button" onclick="numberClicked(3)">
+            3
+          </button>
+          <button class="calculator-button" onclick="operatorClicked('*')">
+            *
+          </button>
+          <button class="calculator-button" onclick="decimalClicked()">
+            .
+          </button>
+          <button class="calculator-button" onclick="numberClicked(0)">
+            0
+          </button>
+          <button class="calculator-button" onclick="deleteClicked()">
+            DEL
+          </button>
+          <button class="calculator-button" onclick="operatorClicked('/')">
+            /
+          </button>
+          <button class="calculator-button span-two" onclick="clearClicked()">
+            AC
+          </button>
+          <button class="span-two calculator-button" onclick="equalsClicked()">
+            =
+          </button>
+        </div>
       </div>
     </div>
+    <footer>
+      Copyright &copy; 2022 JayArya
+      <a href="https://github.com/JayArya/calculator" target="_blank"
+        ><img
+          class="github-icon"
+          src="./assets/GitHub-Mark-Light-32px.png"
+          alt="GitHub-Mark"
+      /></a>
+    </footer>
   </body>
 </html>
