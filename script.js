@@ -13,11 +13,13 @@ const operate = (operator, num1, num2) => {
   if (operator === "/") return divide(num1, num2);
 };
 
-let num1 = null;
-let num2 = null;
+let num1 = "";
+let num2 = "";
 let operation = null;
-let result = null;
+let result = "";
 let stage = "firstNumber";
+let num1DecimalPosition = -1;
+let num2DecimalPosition = -1;
 const num1Display = document.getElementById("num1");
 const num2Display = document.getElementById("num2");
 const operatorDisplay = document.getElementById("operator");
@@ -32,10 +34,12 @@ const updateDisplay = () => {
 
 const numberClicked = (num) => {
   if (stage === "secondNumber") {
-    num2 = num2 * 10 + num;
+    num2 += num;
+    if (num2DecimalPosition >= 0) num2DecimalPosition++;
     num2Display.textContent = num2;
   } else if (stage === "firstNumber") {
-    num1 = num1 * 10 + num;
+    num1 += num;
+    if (num1DecimalPosition >= 0) num1DecimalPosition++;
     num1Display.textContent = num1;
   }
 };
@@ -45,48 +49,59 @@ const operatorClicked = (operator) => {
     operation = operator;
     operatorDisplay.textContent = operation;
   } else {
-    num1 = operate(operation, num1, num2);
+    num1 = operate(operation, +num1, +num2);
     operation = operator;
-    num2 = null;
-    result = null;
+    num2 = "";
+    result = "";
     updateDisplay();
   }
   stage = "secondNumber";
 };
 
-const clearClicked = () => {
-  num1 = null;
-  num2 = null;
-  operation = null;
-  result = null;
-  stage = "firstNumber";
-  updateDisplay();
-};
-
-const deleteClicked = () => {
-  if (stage === "secondNumber") {
-    if (num2 < 10) {
-      num2 = null;
-    } else {
-      let num2String = "" + num2;
-      num2 = +num2String.substring(0, num2String.length - 1);
-    }
+const decimalClicked = () => {
+  if (stage === "secondNumber" && num2DecimalPosition === -1) {
+    isNum2Decimal = 0;
+    num2 += ".";
     num2Display.textContent = num2;
-  } else if (stage === "firstNumber") {
-    if (num1 < 10) {
-      num1 = null;
-    } else {
-      let num1String = "" + num1;
-      num1 = +num1String.substring(0, num1String.length - 1);
-    }
+  } else if (stage === "firstNumber" && num1DecimalPosition === -1) {
+    num1DecimalPosition = 0;
+    num1 += ".";
     num1Display.textContent = num1;
   }
 };
 
+const deleteClicked = () => {
+  if (stage === "secondNumber") {
+    num2 = num2.length === 1 ? "" : num2.substring(0, num2.length - 1);
+    if (num2DecimalPosition > -1) num2DecimalPosition--;
+    num2Display.textContent = num2;
+  } else if (stage === "firstNumber") {
+    num1 = num1.length === 1 ? "" : num1.substring(0, num1.length - 1);
+    if (num1DecimalPosition > -1) num1DecimalPosition--;
+    num1Display.textContent = num1;
+  }
+};
+
+const clearClicked = () => {
+  num1 = "";
+  num2 = "";
+  num1DecimalPosition = -1;
+  num2DecimalPosition = -1;
+  operation = null;
+  result = "";
+  stage = "firstNumber";
+  updateDisplay();
+};
+
 const equalsClicked = () => {
-  if (operation !== null && num1 !== null && num2 !== null) {
-    result = operate(operation, num1, num2);
+  if (operation !== null && num1 !== "" && num2 !== "") {
+    result =
+      num1DecimalPosition > -1 || num2DecimalPosition > -1
+        ? operate(operation, +num1, +num2).toFixed(5)
+        : operate(operation, +num1, +num2);
     stage = "finalResult";
+    num1DecimalPosition = -1;
+    num2DecimalPosition = -1;
     resultDisplay.textContent = result;
   }
 };
@@ -106,7 +121,8 @@ document.addEventListener("keydown", (e) => {
   if (e.key == "-") operatorClicked("-");
   if (e.key == "*") operatorClicked("*");
   if (e.key == "/") operatorClicked("/");
+  if (e.key == ".") decimalClicked();
   if (e.key == "Backspace" || e.key == "Delete") deleteClicked();
   if (e.key == "Escape") clearClicked();
-  if (e.key == "=") equalsClicked();
+  if (e.key == "=" || e.key == "Enter") equalsClicked();
 });
