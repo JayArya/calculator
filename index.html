@@ -108,6 +108,43 @@
         </div>
       </div>
     </div>
+    <div class="keyboard-shortcuts-modal">
+      <div class="keyboard-shortcuts-modal-content">
+        <div class="keyboard-shortcuts-modal-heading">
+          <h2>Keyboard Shortcuts</h2>
+        </div>
+        <div class="shortcuts-detail">
+          <span>'0' to '9' - Enter Digit</span>
+          <hr />
+          <span>+ | - | * | / - Select Operator</span>
+          <hr />
+          <span>'.' - Set Decimal</span>
+          <hr />
+          <span>'Backspace' OR 'Delete' - Delete digit</span>
+          <hr />
+          <span>'Escape' - All Clear</span>
+          <hr />
+          <span>'=' OR 'Enter' - Get Result</span>
+          <hr />
+          <span>'?' - Toggle Shortcuts Menu</span>
+          <hr />
+        </div>
+        <button
+          class="dismiss-button"
+          onclick="dismissShortcutsModal()"
+          title="dismiss-modal-button"
+        >
+          DISMISS
+        </button>
+      </div>
+    </div>
+    <button
+      class="toggle-floating-button"
+      onclick="toggleKeyboardShortcutsModal()"
+      title="toggle-modal-button"
+    >
+      ?
+    </button>
     <footer>
       Copyright &copy; 2022 JayArya
       <a href="https://github.com/JayArya/calculator" target="_blank"

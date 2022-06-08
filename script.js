@@ -20,10 +20,14 @@ let result = "";
 let stage = "firstNumber";
 let num1DecimalPosition = -1;
 let num2DecimalPosition = -1;
+let isShortcutsModalVisible = false;
 const num1Display = document.getElementById("num1");
 const num2Display = document.getElementById("num2");
 const operatorDisplay = document.getElementById("operator");
 const resultDisplay = document.getElementById("result");
+const keyboardShortcutsModal = document.querySelector(
+  ".keyboard-shortcuts-modal"
+);
 
 const updateDisplay = () => {
   num1Display.textContent = num1;
@@ -106,6 +110,18 @@ const equalsClicked = () => {
   }
 };
 
+const toggleKeyboardShortcutsModal = () => {
+  isShortcutsModalVisible = !isShortcutsModalVisible;
+  isShortcutsModalVisible
+    ? (keyboardShortcutsModal.style.display = "flex")
+    : (keyboardShortcutsModal.style.display = "none");
+};
+
+const dismissShortcutsModal = () => {
+  isShortcutsModalVisible = false;
+  keyboardShortcutsModal.style.display = "none";
+};
+
 document.addEventListener("keydown", (e) => {
   if (e.key == "0") numberClicked(0);
   if (e.key == "1") numberClicked(1);
@@ -125,4 +141,5 @@ document.addEventListener("keydown", (e) => {
   if (e.key == "Backspace" || e.key == "Delete") deleteClicked();
   if (e.key == "Escape") clearClicked();
   if (e.key == "=" || e.key == "Enter") equalsClicked();
+  if (e.key == "?") toggleKeyboardShortcutsModal();
 });
